@@ -52,6 +52,11 @@
 :: Set home path
 @if not defined HOME set HOME=%USERPROFILE%
 
+:: Set current dir from cmder_cd.tmp file created by cmdr.bat helper
+@if exist "%CMDER_ROOT%\cmder_cd.tmp" (
+    @set /p CMDER_START= <"%CMDER_ROOT%\cmder_cd.tmp"
+    @del "%CMDER_ROOT%\cmder_cd.tmp"
+)
 @if defined CMDER_START (
     @cd /d "%CMDER_START%"
 ) else (
